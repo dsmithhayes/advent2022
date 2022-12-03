@@ -14,7 +14,7 @@ int tallyCalories(int[] calories)
 
 string[] parseLists(string list)
 {
-    return std.regex.split(list, regex("\n\n"));
+    return std.regex.split(list, regex("\n\n")).array;
 }
 
 int[][] convertList(string[] caloriesList) 
@@ -43,7 +43,8 @@ unittest {
 ";
 
     string[] parsedCaloriesList = parseLists(caloriesList);
-    assert(parsedCaloriesList[1] == "4000");
+    assert("1000\n2000\n3000" == parsedCaloriesList[0]);
+    assert("4000" == parsedCaloriesList[1]);
 
     int[][] listsAsNumbers = convertList(parsedCaloriesList);
     assert(listsAsNumbers[0][0] == 1000);
